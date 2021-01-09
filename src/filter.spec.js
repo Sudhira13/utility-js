@@ -14,4 +14,7 @@ describe('Filter', () => {
     it('Filter[1,2,3] when the function returns x>1 is [2,3]', () => {
         expect(filter([1,2,3], x => x>1)).toEqual([2,3])
     });
+    it('Filter["a","B","c"] when the function returns true is ["B"]', () => {
+        expect(filter(['a','B','c'], x => (x == x.toUpperCase() ? true : false))).toEqual(['B'])
+    });
 })
