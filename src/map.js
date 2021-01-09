@@ -1,6 +1,6 @@
 
 let result = []
-let limit
+let limit = 0
 function calculate(list,func){
     if(!list){
         return []
