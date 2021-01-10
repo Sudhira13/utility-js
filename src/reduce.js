@@ -1,23 +1,29 @@
 let result = []
 let listLength = 0
-function calculate(list,func,value){
+let length = 1;
+function calculate(list,func,value,initialVal){
     if(listLength==0){
-        return undefined
+        return initialVal ? initialVal : undefined
     }
-    if(listLength == 1){
-        result.push(func(value,list[listLength-1]))
-        return result.pop()
+    if(length == listLength){
+        return value
     }
-    result.push(func(value,list[listLength-1]))
+    result.push(func(value,list[length]))
     value = result.pop()
-    listLength = listLength-1
-    return calculate(list,func,value)
+    length = length+1
+    return calculate(list,func,value,initialVal)
 }
-const reduce = (list, func) => {
-    result = []
+const reduce = (list,func,initialVal) => {
+    let value
     listLength = list.length
-    let value = null
-    let output = calculate(list ,func,value);
+    if (initialVal == null){
+        value = ''
+    }
+    else{
+        value = initialVal
+        length = 0
+    }
+    let output = calculate(list,func,value,initialVal);
     return output
 }
 
